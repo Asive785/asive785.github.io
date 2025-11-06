@@ -1,15 +1,16 @@
 
 // Scroll Animation (Fade + Slide)
-const sections = document.querySelectorAll("section");
+const cards = document.querySelectorAll(".card, .project");
 
 function reveal() {
   const triggerBottom = window.innerHeight * 0.85;
-  
-  sections.forEach(sec => {
-    const boxTop = sec.getBoundingClientRect().top;
-    if (boxTop < triggerBottom) sec.classList.add("show");
+
+  cards.forEach(card => {
+    const boxTop = card.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) card.classList.add("show");
   });
 }
 
+// Trigger on scroll and on page load
 window.addEventListener("scroll", reveal);
-reveal();
+window.addEventListener("load", reveal);
