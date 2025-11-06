@@ -1,9 +1,15 @@
 
-// Small smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', function(e){
-    e.preventDefault();
-    const id = this.getAttribute('href');
-    document.querySelector(id).scrollIntoView({behavior:'smooth'});
+// Scroll Animation (Fade + Slide)
+const sections = document.querySelectorAll("section");
+
+function reveal() {
+  const triggerBottom = window.innerHeight * 0.85;
+  
+  sections.forEach(sec => {
+    const boxTop = sec.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) sec.classList.add("show");
   });
-});
+}
+
+window.addEventListener("scroll", reveal);
+reveal();
