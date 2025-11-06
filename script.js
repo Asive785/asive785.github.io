@@ -1,13 +1,9 @@
-const sections = document.querySelectorAll(".section, .project-card");
 
-function reveal() {
-  const triggerBottom = window.innerHeight * 0.85;
-  sections.forEach(section => {
-    const top = section.getBoundingClientRect().top;
-    if(top < triggerBottom) section.classList.add("show");
+// Small smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    const id = this.getAttribute('href');
+    document.querySelector(id).scrollIntoView({behavior:'smooth'});
   });
-}
-
-window.addEventListener("scroll", reveal);
-window.addEventListener("load", reveal);
-
+});
